@@ -18,6 +18,12 @@ const Cart = () => {
     userProgressCtx.hideCart();
   };
 
+  const handleCheckoutOpen = () => {
+    userProgressCtx.showCheckout();
+  };
+
+  console.log(cartCtx.items);
+
   return (
     <Modal className="cart" open={userProgressCtx.progress === 'cart'}>
       <h2>Your Cart</h2>
@@ -38,7 +44,9 @@ const Cart = () => {
         <Button onClick={handleCloseCart} textOnly>
           Close
         </Button>
-        <Button>Go to Checkout</Button>
+        {cartCtx.items.length > 0 && (
+          <Button onClick={handleCheckoutOpen}>Go to Checkout</Button>
+        )}
       </p>
     </Modal>
   );
